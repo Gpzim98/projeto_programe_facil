@@ -30,9 +30,9 @@ ALLOWED_HOSTS = []
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'srv146.prodns.com.br'
-EMAIL_HOST_PASSWORD = '(s}O!iG+!J@;'
-EMAIL_HOST_USER = 'contato@programefacil.com.br'
-EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
+EMAIL_HOST_USER = config('EMAIL_USER')
+EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 

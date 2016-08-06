@@ -11,7 +11,7 @@ ADMINS = ['adm@programefacil.com.br']
 def email(contact):
     subject = "Parabéns você foi incrível!"
     to = [contact.email]
-    from_email = 'adm@programefacil.com.br'
+    from_email = FROM
 
     ctx = {
         'user': contact.name,
