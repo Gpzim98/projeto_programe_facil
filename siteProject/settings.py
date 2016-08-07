@@ -46,6 +46,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+
+    # Social media authenticator
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -59,6 +69,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'siteProject.urls'
+
+SITE_ID = 2
 
 TEMPLATES = [
     {
@@ -127,3 +139,40 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = 'static'
+
+# Django allAuth
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = \
+    {
+        'facebook':
+            {'METHOD': 'oauth2',
+             'SCOPE': ['email', 'public_profile', 'user_friends'],
+             'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+             'FIELDS': [
+                 'id',
+                 'email',
+                 'name',
+                 'first_name',
+                 'last_name',
+                 'verified',
+                 'locale',
+                 'timezone',
+                 'link',
+                 'gender',
+                 'updated_time'],
+             'EXCHANGE_TOKEN': True,
+             'VERIFIED_EMAIL': False,
+             'VERSION': 'v2.4'},
+        'google':
+            {'SCOPE': ['profile', 'email'], 'AUTH_PARAMS': { 'access_type': 'online'}
+        }
+}
