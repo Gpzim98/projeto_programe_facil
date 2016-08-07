@@ -6,7 +6,6 @@ django-allauth==0.26.1
 gunicorn==19.4.1
 oauthlib==1.1.2
 Pillow==3.3.0
-pkg-resources==0.0.0
 psycopg2==2.6.1
 python-decouple==3.0
 python3-openid==3.0.10
