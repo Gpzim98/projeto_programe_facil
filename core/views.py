@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 
 @receiver(pre_social_login)
-def new_user(request, sociallogin):
+def new_user(request, sociallogin, **kwargs):
     lead = Lead(name='teste new user', email='contato@gregorypacheco.com.br')
     email(lead)
     request.message = 'teste new user'
