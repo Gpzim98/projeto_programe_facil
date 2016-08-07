@@ -117,8 +117,24 @@
   <!--  -->
 
         <div class="mailing-list">
-          <h3 class="mailing-list-heading">Coloque o seu e-mail abaixo e uma jornada incrível que mudará a sua vida</h3>
-          <div class="row">
+          <h3 class="mailing-list-heading">Para ingressar nessa jornada incrível use umas das redes sociais abaixo ou
+                                           apenas insira seu nome e e-mail nos campos abaixo
+          </h3>
+            <div class="row row-centered">
+                <div class="col-xs-4 col-centered">
+                    <a href="/accounts/facebook/login/?process=login">
+                        <img src="{% static 'img/facebook.png' %}" alt="Login com Facebook">
+                    </a>
+                    <a href="/accounts/google/login/?process=login'">
+                        <img src="{% static 'img/google-plus.png' %}" alt="Login com Google">
+                    </a>
+                    <a href="/accounts/twitter/login/?process=login'">
+                        <img src="{% static 'img/twitter.png' %}" alt="Login com Twitter">
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
             <form class="form-inline" method="POST">
               {% csrf_token %}
               <div class="form-group">
