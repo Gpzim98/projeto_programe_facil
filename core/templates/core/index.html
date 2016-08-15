@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Google fonts-->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- Theme stylesheet-->
     <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
@@ -34,7 +33,11 @@
     <div style="background-image: url('{% static 'img/paris.jpg' %}')" class="main">
       <div class="overlay"></div>
       <div class="container">
-        <p class="social"><a href="#" title="" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" title="" class="twitter"><i class="fa fa-twitter"></i></a><a href="#" title="" class="gplus"><i class="fa fa-google-plus"></i></a><a href="#" title="" class="instagram"><i class="fa fa-instagram"></i></a></p>
+        <p class="social">
+            <a href="https://www.facebook.com/projetoprogramefacil/" title="" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="http://www.twitter.com/programefacil" title="" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCki1tFRGGJYTJdL7M0_Y62A" title="" class="gplus"><i class="fa fa-youtube"></i></a>
+        </p>
         <h1 class="cursive">Se torne um programador web</h1>
         <h2 class="sub">Ingresse na jornada que mudara a sua vida</h2>
 
@@ -50,9 +53,19 @@
         </div>
         {% endif %}
 
+        <div class="row row-centered">
+            <div class="col-lg-6">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/oWbdYlnyejU?list=PLHWfNMxB2F4G2KHo8DBQr_xq79FXgEIAE"
+                        frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="sub">aprenda do ZERO as mais modernas tecnologias exegidas pelo mercado em um curso inedito e COMPLETO</h2>
+            </div>
+        </div>
+
 
        <div class="row row-centered">
-         <h2 class="sub">aprenda do ZERO as mais modernas tecnologias exegidas pelo mercado em um curso inedito e COMPLETO</h2>
          <div class="col-xs-1 col-centered"><img src="{% static 'img/web.png' %}"
            alt="Entenda os principais conceitos da web, como ela funciona, como funcionam as hospedagens de sites, DNS e muito mais"
            with='90px' height='90px'

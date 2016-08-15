@@ -1,2 +1,2 @@
-1: Send email confimation for social login
+1: Change new_user function to create a lead object and send a correct objetc
 2: Modify email template

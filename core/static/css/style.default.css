@@ -31,6 +31,8 @@
 .main .container {
   position: relative;
   z-index: 2;
+  background-color: rgba(9, 46, 32, 0.4);
+  padding-bottom: 20px;
 }
 .main #video-background {
   position: fixed;
@@ -90,8 +92,7 @@
   }
 }
 .main .cursive {
-  margin-top: 100px;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Open Sans', sans-serif;
   font-size: 60px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   text-align: center;
@@ -100,7 +101,7 @@
 
 .cursive2 {
     margin-top: 100px;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Open Sans', sans-serif;
     font-size: 40px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
     text-align: center;
@@ -927,6 +928,7 @@ a.list-group-item.active > .badge,
 /* centered columns styles */
 .row-centered {
     text-align:center;
+    margin-top: 20px;
 }
 .col-centered {
     display:inline-block;
