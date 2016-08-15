@@ -8,7 +8,7 @@ from django.dispatch import receiver
 
 @receiver(pre_social_login)
 def new_user(request, sociallogin, **kwargs):
-    lead = Lead(name=sociallogin.user.username, email=sociallogin.user.email, email_confirmed=True)
+    lead = Lead(name=sociallogin.user.first_name, email=sociallogin.user.email, email_confirmed=True)
     if save_lead(lead) == 0:
         email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabéns você foi incrível!')
         request.message = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
