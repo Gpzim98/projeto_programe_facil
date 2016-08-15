@@ -9,19 +9,29 @@ from django.dispatch import receiver
 @receiver(pre_social_login)
 def new_user(request, sociallogin, **kwargs):
     lead = Lead(name=sociallogin.user.username, email=sociallogin.user.email, email_confirmed=True)
-    lead.save()
-    email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabéns você foi incrível!')
-    request.message = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
+    if save_lead(lead) == 0:
+        email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabéns você foi incrível!')
+        request.message = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
+    else:
+        request.message = 'Parabêns, você já esta cadastrado!'
     return request
+
+
+def save_lead(lead):
+    if Lead.objects.filter(email=lead.email).count() == 0:
+        lead.code_confirm = hash_generator()
+        lead.save()
+        return 0
+    else:
+        return 1
 
 
 def home(request):
     data = {}
 
     if request.method == 'POST':
-        if Lead.objects.filter(email=request.POST.get('email')).count() == 0:
-            lead = Lead(name=request.POST.get('nome'), email=request.POST.get('email'), code_confirm=hash_generator())
-            lead.save()
+        lead = Lead(name=request.POST.get('nome'), email=request.POST.get('email'))
+        if save_lead(lead) == 0:
             data['message'] = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
             email(contact=lead, template='core/mail/client_subscribed.html', subject="Parabéns você foi incrível!")
         else:
