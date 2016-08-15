@@ -8,9 +8,10 @@ from django.dispatch import receiver
 
 @receiver(pre_social_login)
 def new_user(request, sociallogin, **kwargs):
-    lead = Lead(name='teste new user', email='contato@gregorypacheco.com.br')
-    email(contact=lead, template='core/mail/client_subscribed.html', subject='test new user')
-    request.message = 'teste new user'
+    lead = Lead(name=sociallogin.user.username, email=sociallogin.user.email, email_confirmed=True)
+    lead.save()
+    email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabéns você foi incrível!')
+    request.message = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
     return request
 
 
@@ -39,7 +40,7 @@ def email_confim(request, code):
     except Exception as e:
         message = '''Oops, houve um problema durante a confirmacao do e-mail, por favor envie
                                      um email para contato@programefacil.com.br para que possamos resolver este problema
-                                     pra você '''
+                                     pra você'''
         msg = EmailMessage('Fail at confirm email', message + str(e), to=('adm@programefacil.com.br',),
                            from_email='adm@programefacil.com.br')
         msg.send()

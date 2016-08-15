@@ -1,2 +1,3 @@
 1: Change new_user function to create a lead object and send a correct objetc
 2: Modify email template
+3: Change DEBUG True
