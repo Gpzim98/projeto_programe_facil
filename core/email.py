@@ -8,17 +8,16 @@ FROM = 'contato@programefacil.com.br'
 ADMINS = ['adm@programefacil.com.br']
 
 
-def email(contact):
-    subject = "Parabéns você foi incrível!"
+def email(contact, template, subject):
     to = [contact.email]
     from_email = FROM
 
     ctx = {
         'user': contact.name,
-        'purchase': 'Books'
+        'code_confirm': contact.code_confirm,
     }
 
-    message = get_template('core/mail/client_subscribed.html').render(Context(ctx))
+    message = get_template(template).render(Context(ctx))
     msg = EmailMessage(subject, message, to=to, bcc=ADMINS, from_email=from_email)
     msg.content_subtype = 'html'
     msg.send()
