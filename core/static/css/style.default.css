@@ -938,3 +938,18 @@ a.list-group-item.active > .badge,
     /* inline-block space fix */
     margin-right:-4px;
 }
+
+.lista {
+    list-style: square;
+    text-align: left;
+    color: white;
+    font-size: 18px;
+    background-color
+    box-shadow: 10px 10px 5px #888888;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lista li {
+    padding: 6.5px;
+    font-family: 'Open Sans', sans-serif;
+}
