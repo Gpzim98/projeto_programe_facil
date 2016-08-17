@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Programe Facil - Se torne um programador web do absoluto zero">
+    <meta name="author" content="">
+    <meta name="keywords" content="HTML,CSS,Python,Django, Git, Web, Programacao">
+    <meta name="author" content="Gregory Pacheco">
+
+    <title>{% block title %}Se torne um programador web{% endblock %}</title>
+
+    <!--Font awesom-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'template_bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'template_bootstrap/css/scrolling-nav.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/my-style.css' %}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top nav-vidro" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Programe Fácil</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Tecnologias abordadas</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Depoimentos</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#autor">Sobre o tutor</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contagem regressiva</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#inscreva">Se increva</a>
+                    </li>
+                </ul>
+                <div class="social">
+                    <a href="https://www.facebook.com/projetoprogramefacil/" title="Curta nossa página no Facebook"
+                       class="facebook" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+                    <a href="http://www.twitter.com/programe_facil" title="Siga-nos no twitter"
+                       class="twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCki1tFRGGJYTJdL7M0_Y62A" title="Assine o nosso canal no You tube"
+                       class="gplus" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container-fluid">
+    {% block main %}
+
+    {% endblock %}
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'template_bootstrap/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'template_bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{% static 'template_bootstrap/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'template_bootstrap/js/scrolling-nav.js' %}"></script>
+
+</script>
+</body>
+
+
+</html>

@@ -1,0 +1,240 @@
+{% extends "template_bootstrap/base.html" %}
+{% load static %}
+
+{% block main %}
+<!-- Intro Section -->
+<section id="intro" class="intro-section1">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Se torne um programador web</h1>
+            <h3 id="h3-top-space">Ingresse na jornada que mudara a sua vida</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe src="https://player.vimeo.com/video/178977249"></iframe>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <br>
+            <h3>
+                    Aprenda do ZERO as mais modernas tecnologias exegidas pelo mercado em um curso inedito e COMPLETO
+            </h3>
+            <ul class="list-group" id="lista-vantagens">
+                <li class="list-group-item active vidro"><i class="glyphicon glyphicon-heart"> </i> Do absoluto zero a um software web no ar</li>
+                <li class="list-group-item vidro"><i class="glyphicon glyphicon-book"></i> Fórum exclusivo para tirar dúvidas e aprender com os outros alunos</li>
+                <li class="list-group-item active vidro"><i class="glyphicon glyphicon-flag"></i> Ajuda com os problemas de seu código</li>
+                <li class="list-group-item vidro"><i class="glyphicon glyphicon-envelope"></i> Suporte via e-mail/Git/Chat</li>
+            </ul>
+            <a href="#inscreva" class="btn btn-info page-scroll"><h4>Quero me inscrever</h4></a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="row" id="tecnologias">
+        <h2>Tecnologias abordadas</h2>
+        <div class="col-xs-6 col-md-4">
+            <img src="{% static 'img/web.png' %}"
+        alt="Entenda os principais conceitos da web, como ela funciona, como funcionam as hospedagens de sites, DNS e muito mais"
+        with='90px' height='90px'
+        title="Entenda os principais conceitos da web, como ela funciona, como funcionam as hospedagens de sites, DNS e muito mais" data-toggle="tooltip" data-placement="right"/>
+        <p>Entenda os principais conceitos da web, como ela funciona, como funcionam as hospedagens de sites, DNS e muito mais</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/html5.png' %}"
+        alt="Aprenda sobre a linguagem HTML5, e com ela que tudo ganha forma na Web"  with='90px' height='90px'data-toggle="tooltip" data-placement="right"
+        title="Aprenda sobre a linguagem HTML5, e com ela que tudo ganha forma na Web"/>
+        <p>Aprenda sobre a linguagem HTML5, e com ela que tudo ganha forma na Web</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/css3.png' %}"
+        alt="Com a linguagem CSS3 voce poderá dar forma, cores e ate comportamento a suas páginas HTML5"  with='90px' height='90px'data-toggle="tooltip" data-placement="right"
+        title="Com a linguagem CSS3 voce poderá dar forma, cores e ate comportamento a suas páginas HTML5"/>
+        <p>Com a linguagem CSS3 voce poderá dar forma, cores e ate comportamento a suas páginas HTML5</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/bootstrap.png' %}"
+        alt="O  Bootstrap e o mais importante framework CSS do mercado, ela vai facilitar a sua vida na
+        hora de construir belas páginas web"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="O Bootstrap e o mais importante framework CSS do mercado, ela vai facilitar a sua vida na
+        hora de construir belas páginas web"/>
+        <p>O Bootstrap e o mais importante framework CSS do mercado, ela vai facilitar a sua vida na
+        hora de construir belas páginas web</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/git.png' %}"
+        alt="Aprenda a usar o Git para gerenciar de forma profissional o conteúdo de seus sites"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Aprenda a usar o Git para gerenciar de forma profissional o conteúdo de seus sites"/>
+        <p>Aprenda a usar o Git para gerenciar de forma profissional o conteúdo de seus sites</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/python.ico' %}"
+        alt="Aprenda a linguagem do momento, a linguagem que mais cresce no mundo todo e te colocara
+        na crista da onda"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Aprenda a linguagem do momento, a linguagem que mais cresce no mundo todo e te colocara
+        na crista da onda"/>
+        <p>Aprenda a linguagem do momento, a linguagem que mais cresce no mundo todo e te colocara
+        na crista da onda</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/logica.svg' %}"
+        alt="Lógica de programacão e a base da programacão Backend, voce precisa estar afiado em racíocinio lógico"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Lógica de programacão e a base da programacão Backend, voce precisa estar afiado em racíocinio lógico"/>
+        <p>Lógica de programacão e a base da programacão Backend, voce precisa estar afiado em racíocinio lógico</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/django.png' %}"
+        alt="Falou em produtividade na web, falou Django Framework. Aprenda essa máquina poderoda
+        de contrução de aplicações web"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Falou em produtividade na web, falou Django Framework. Aprenda essa máquina poderoda
+        de contrução de aplicações web"/>
+        <p>Falou em produtividade na web, falou Django Framework. Aprenda essa máquina poderoda
+        de contrução de aplicações web</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/mysql.png' %}"
+        alt="Aqui vamos aprender a colocar o Django para rodar com esse famoso banco de dados, o MySQl"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Aqui vamos aprender a colocar o Django para rodar com esse famoso banco de dados, o MySQl"/>
+        <p>Aqui vamos aprender a colocar o Django para rodar com esse famoso banco de dados, o MySQl</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/postgres' %}"
+        alt="Aqui vamos aprender a colocar o Django para rodar com esse outro famoso banco de dados, o PostGres"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Aqui vamos aprender a colocar o Django para rodar com esse outro famoso banco de dados, o PostGres"/>
+        <p>Aqui vamos aprender a colocar o Django para rodar com esse outro famoso banco de dados, o PostGres</p>
+        </div>
+        <div class="col-xs-6 col-md-4"><img src="{% static 'img/heroku.png' %}"
+        alt="Coloque seus sites e aplicacões web no ar com um dos mais modernos SaaS do mercado"  with='90px' height='90px' data-toggle="tooltip" data-placement="right"
+        title="Coloque seus sites e aplicacoes web no ar com um dos mais modernos SaaS do mercado"/>
+        <p>Coloque seus sites e aplicacoes web no ar com um dos mais modernos SaaS do mercado</p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="carousel">
+	<div class="container" id="services">
+		<div class="row">
+            <h2 align="center">Depoimentos</h2>
+			<div class="col-md-8 col-md-offset-2">
+                <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
+				<div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+				  <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+				    <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+				    <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+				    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+				    	<blockquote>
+				    		<p>O DjangoMOC, foi um grande experiência para meus estudos na área de Web, principalmente sobre servidores,
+                                e não posso deixar de falar do framework Django, ótima ferramenta de desenvolvimento web.
+                                Realmente só abri minha mente em relação a programação depois deste curso. Que venham os proximos.
+                            </p>
+				    	</blockquote>
+				    </div>
+				    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+				    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+				    <div class="active item">
+                        <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
+				    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+                    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+    			    	<blockquote>
+				    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+				    	</blockquote>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Intro Section -->
+<section id="autor" class="about-section">
+    <div class="row">
+        <div class="col-lg-4">
+            <h2 id="h2-autor">Gregory Pacheco</h2>
+            <img src="{% static 'img/autor.jpg' %}" alt="Gregory Pacheco" width="250px" height="250px">
+        </div>
+        <div class="col-lg-6 my-autor">
+            <p>- Bacharel em sistemas de informação</p>
+            <p>- Especialista em desenvolvimento de aplicações web pela PUC Minas</p>
+            <p>- MBA em Engenharia de tecnologia e Inovação</p>
+            <p>- +4 anos de experiêcia em desenvolvimento de software</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="intro-section2">
+    <h2>Contagem regressiva </h2>
+    {% include 'template_bootstrap/countdown.html' %}
+</section>
+
+<section id="inscreva" class="contact-section">
+    <div class="row">
+      <div class="col-lg-12">
+
+
+        <h3>
+            Para ingressar nessa jornada incrível use umas das redes sociais abaixo ou apenas insira seu nome e e-mail nos campos abaixo
+        </h3>
+        <form method="POST" class="form-inline">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome"  class="form-control transparent" required placeholder="Digite seu nome">
+                <label for="email">Email</label>
+                <label for="email" class="sr-only" ></label>
+                <input type="email" placeholder="seu.email@aqui.com.br" id="email" name='email' class="form-control transparent" required>
+            </div>
+            <button class="btn btn-danger">Eu quero uma vaga!</button>
+        </form>
+
+            <!--<div class="row row-centered">-->
+            <!--<div class="col-xs-4 col-centered">-->
+            <!--<a href="/accounts/facebook/login/?process=login">-->
+            <!--<img src="{% static 'img/facebook.png' %}" alt="Login com Facebook">-->
+            <!--</a>-->
+            <!--<a href="/accounts/google/login/?process=login'">-->
+            <!--<img src="{% static 'img/google-plus.png' %}" alt="Login com Google">-->
+            <!--</a>-->
+            <!--<a href="/accounts/twitter/login/?process=login'">-->
+            <!--<img src="{% static 'img/twitter.png' %}" alt="Login com Twitter">-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+
+
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    <p align="center">Alguns direitos reservados</p>
+</div>
+{% endblock %}

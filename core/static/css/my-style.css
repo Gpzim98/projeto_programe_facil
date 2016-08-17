@@ -1,0 +1,55 @@
+/* My Own CSS*/
+.my-autor {
+    margin-top: 40px;
+}
+
+.my-autor p{
+    text-align: left;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 10px;
+    color: #777;
+}
+
+#h2-autor {
+    color: #777;
+}
+
+#h3-top-space {
+    margin-bottom: 30px;
+}
+
+#lista-vantagens {
+   font-size: 18px;
+   margin-top: 30px;
+}
+
+.social {
+    position: absolute;
+    top: 0px;
+    right: 100px;
+    margin-top: 20px;
+}
+
+
+body {
+	background-image: url('../img/sample.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.vidro {
+   background-color: rgba(51, 122, 183, 0.51);
+   color: white;
+}
+
+.nav-vidro {
+    background-color: rgba(248, 248, 248, 0.47);
+}
+
+.nav-vidro > li > a{
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a

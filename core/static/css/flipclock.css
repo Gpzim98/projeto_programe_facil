@@ -70,8 +70,8 @@
   position: relative;
   float: left;
   margin: 5px;
-  width: 60px;
-  height: 90px;
+  width: 50px;
+  height: 80px;
   font-size: 80px;
   font-weight: bold;
   line-height: 87px;
@@ -200,7 +200,7 @@
   position: absolute;
   top: -1.5em;
   right: -86px;
-  color: white;
+  color: bl;
   text-shadow: none; }
 
 .flip-clock-divider.minutes .flip-clock-label {

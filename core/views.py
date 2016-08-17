@@ -37,7 +37,7 @@ def home(request):
         else:
             data['message'] = 'Parabêns, você já esta cadastrado!'
 
-    return render(request, 'core/index.html', data)
+    return render(request, 'template_bootstrap/index.html', data)
 
 
 def email_confim(request, code):
