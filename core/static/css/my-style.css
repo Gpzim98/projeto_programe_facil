@@ -52,4 +52,7 @@ body {
     color: white;
 }
 
-.navbar-default .navbar-nav > li > a
+#centralizar-alerta {
+    width: 500px;
+    margin: 0 auto;
+}

@@ -32,7 +32,7 @@ def home(request):
     if request.method == 'POST':
         lead = Lead(name=request.POST.get('nome'), email=request.POST.get('email'))
         if save_lead(lead) == 0:
-            data['message'] = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
+            data['message'] = 'Brilhante, você foi cadastrado com sucesso!'
             email(contact=lead, template='core/mail/client_subscribed.html', subject="Parabéns você foi incrível!")
         else:
             data['message'] = 'Parabêns, você já esta cadastrado!'
@@ -46,7 +46,7 @@ def email_confim(request, code):
         lead.email_confirmed = True
         lead.save()
         email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabêns, seu e-mail foi confirmado')
-        return render(request, 'core/index.html', {'message': 'E-mail confirmado com sucesso'})
+        return render(request, 'template_bootstrap/index.html', {'message': 'E-mail confirmado com sucesso'})
     except Exception as e:
         message = '''Oops, houve um problema durante a confirmacao do e-mail, por favor envie
                                      um email para contato@programefacil.com.br para que possamos resolver este problema
@@ -54,7 +54,7 @@ def email_confim(request, code):
         msg = EmailMessage('Fail at confirm email', message + str(e), to=('adm@programefacil.com.br',),
                            from_email='adm@programefacil.com.br')
         msg.send()
-        return render(request, 'core/index.html',
+        return render(request, 'template_bootstrap/index.html',
                       {'message': message})
 
 
