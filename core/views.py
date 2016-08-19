@@ -4,6 +4,7 @@ from django.core.mail import EmailMessage
 from core.models import Lead
 from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
+from django.contrib import messages
 
 
 @receiver(pre_social_login)
@@ -11,9 +12,10 @@ def new_user(request, sociallogin, **kwargs):
     lead = Lead(name=sociallogin.user.first_name, email=sociallogin.user.email, email_confirmed=True)
     if save_lead(lead) == 0:
         email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabéns você foi incrível!')
-        request.message = 'Brilhante, parabêns!, você foi cadastrado com sucesso!'
+        request.message = 'Brilhante, parabêns!, você foi cadastrado com sucesso! Verifique o seu e-mail e clique no ' \
+                          'link para ativar o seu cadastro'
     else:
-        request.message = 'Parabêns, você já esta cadastrado!'
+        request.message = 'Parabêns, você já estava cadastrado! Acompanhe sua caixa de e-mail para os próximos passos'
     return request
 
 
@@ -32,10 +34,11 @@ def home(request):
     if request.method == 'POST':
         lead = Lead(name=request.POST.get('nome'), email=request.POST.get('email'))
         if save_lead(lead) == 0:
-            data['message'] = 'Brilhante, você foi cadastrado com sucesso!'
+            messages.add_message(request, messages.INFO, 'Brilhante, você foi cadastrado com sucesso!')
             email(contact=lead, template='core/mail/client_subscribed.html', subject="Parabéns você foi incrível!")
         else:
-            data['message'] = 'Parabêns, você já esta cadastrado!'
+            messages.add_message(request, messages.INFO, 'Parabêns, você já estava cadastrado! Acompanhe sua caixa de '
+                                                         'e-mail para os próximos passos')
 
     return render(request, 'template_bootstrap/index.html', data)
 
@@ -46,16 +49,18 @@ def email_confim(request, code):
         lead.email_confirmed = True
         lead.save()
         email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabêns, seu e-mail foi confirmado')
-        return render(request, 'template_bootstrap/index.html', {'message': 'E-mail confirmado com sucesso'})
+        messages.add_message(request, messages.INFO, 'E-mail confirmado com sucesso')
+        return redirect('core_home')
+        # return render(request, 'template_bootstrap/index.html', {'message': 'E-mail confirmado com sucesso'})
     except Exception as e:
         message = '''Oops, houve um problema durante a confirmacao do e-mail, por favor envie
                                      um email para contato@programefacil.com.br para que possamos resolver este problema
                                      pra você'''
+        messages.add_message(request, messages.INFO, message)
         msg = EmailMessage('Fail at confirm email', message + str(e), to=('adm@programefacil.com.br',),
                            from_email='adm@programefacil.com.br')
         msg.send()
-        return render(request, 'template_bootstrap/index.html',
-                      {'message': message})
+        return render(request, 'template_bootstrap/index.html')
 
 
 def thanks(request):
