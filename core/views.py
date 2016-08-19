@@ -46,13 +46,20 @@ def home(request):
 
 def email_confim(request, code):
     try:
-        lead = Lead.objects.get(code_confirm=code)
-        lead.email_confirmed = True
-        lead.save()
-        email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabêns, seu e-mail foi confirmado')
-        messages.add_message(request, messages.INFO, 'E-mail confirmado com sucesso')
+        if Lead.objects.filter(code_confirm=code).count() == 1:
+            lead = Lead.objects.get(code_confirm=code)
+            if not lead.email_confirmed:
+                lead.email_confirmed = True
+                lead.save()
+                email(contact=lead, template='core/mail/email_confirmed.html', subject='Parabêns, seu e-mail foi confirmado')
+                messages.add_message(request, messages.INFO, 'E-mail confirmado com sucesso')
+            else:
+                messages.add_message(request, messages.INFO, 'Parabêns, o seu e-mail já estava confirmado')
+        else:
+            messages.add_message(request, messages.INFO, 'Desculpe, o seu código de confirmacão não foi encontrado,'
+                                                         'por favor nos envie um e-mail em suporte@programefacil.com.br'
+                                                         'para relatar este problema.')
         return redirect('core_home')
-        # return render(request, 'template_bootstrap/index.html', {'message': 'E-mail confirmado com sucesso'})
     except Exception as e:
         message = '''Oops, houve um problema durante a confirmacao do e-mail, por favor envie
                                      um email para contato@programefacil.com.br para que possamos resolver este problema
@@ -61,7 +68,7 @@ def email_confim(request, code):
         msg = EmailMessage('Fail at confirm email', message + str(e), to=('adm@programefacil.com.br',),
                            from_email='adm@programefacil.com.br')
         msg.send()
-        return render(request, 'template_bootstrap/index.html')
+        return redirect('core_home')
 
 
 def thanks(request):
