@@ -34,7 +34,8 @@ def home(request):
     if request.method == 'POST':
         lead = Lead(name=request.POST.get('nome'), email=request.POST.get('email'))
         if save_lead(lead) == 0:
-            messages.add_message(request, messages.INFO, 'Brilhante, você foi cadastrado com sucesso!')
+            messages.add_message(request, messages.INFO, 'Brilhante, parabêns!, você foi cadastrado com sucesso! Verifique o seu e-mail e clique no ' \
+                          'link para ativar o seu cadastro')
             email(contact=lead, template='core/mail/client_subscribed.html', subject="Parabéns você foi incrível!")
         else:
             messages.add_message(request, messages.INFO, 'Parabêns, você já estava cadastrado! Acompanhe sua caixa de '
