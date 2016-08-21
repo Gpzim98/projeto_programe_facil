@@ -73,7 +73,7 @@ of those sections to manage the look and feel of the site. */
 
 
 .intro-section2 {
-    height: 100%;
+    height: auto;
     padding-top: 50px;
     text-align: center;
     background: #337ab7;
@@ -91,7 +91,7 @@ of those sections to manage the look and feel of the site. */
 
 
 .about-section {
-    height: 100%;
+    height: auto;
     padding-top: 50px;
     text-align: center;
     background: #eee;
@@ -105,7 +105,7 @@ of those sections to manage the look and feel of the site. */
 }
 
 .contact-section {
-    height: 100%;
+    height: auto;
     padding-top: 150px;
     text-align: center;
     background: #eee;
