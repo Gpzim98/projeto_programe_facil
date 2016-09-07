@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from core.views import home, thanks, email_teste, email_confim
+from core.views import home, thanks, email_teste, email_confim, deposito
 
 
 urlpatterns = [
@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^email/(?P<code>\w+)/$', email_teste, name='core_email'),
     url(r'^confirmation/(?P<code>\w+)/$', email_confim, name='core_confirmation'),
     url(r'^thanks/$', thanks, name='core_thanks'),
+    url(r'^deposito/$', deposito, name='url_core_deposito_conta'),
 
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/', home, name='profile'),

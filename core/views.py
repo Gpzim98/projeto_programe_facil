@@ -83,3 +83,7 @@ def hash_generator():
 def email_teste(request, code):
     lead = Lead.objects.all()[0]
     return render(request, 'core/mail/client_subscribed.html', {'lead': lead, 'code': code})
+
+
+def deposito(request):
+    return render(request, 'template_bootstrap/deposito.html')

@@ -65,8 +65,8 @@ of those sections to manage the look and feel of the site. */
 }
 
 .intro-section {
-    height: 100%;
-    padding-top: 150px;
+    height: 720px;
+    padding-top: 0px;
     text-align: center;
     background: #fff;
 }
@@ -167,4 +167,11 @@ section {
     height: 100px;
     margin: 0 auto;
     border-radius: 100px;
+}
+
+.deposito p{
+    text-align: left;
+    color: white;
+    font-size: 20px;
+    margin-left: 40px;
 }

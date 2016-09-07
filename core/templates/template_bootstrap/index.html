@@ -26,6 +26,11 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe src="https://player.vimeo.com/video/178977249"></iframe>
+            </div>
+        </div>
+        <div class="col-lg-4">
             <iframe width="250" height="140" src="https://www.youtube.com/embed/xLLKsdielCI"
                     frameborder="0" allowfullscreen>
             </iframe>
@@ -35,23 +40,17 @@
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/vfJ4On5FzB8" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-        <div class="col-lg-4">
-            <h3>Video 4 - O grande dia</h3>
-            <p>Aguarde...</p>
-        </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="https://player.vimeo.com/video/178977249"></iframe>
-            </div>
+            <iframe src="https://player.vimeo.com/video/181709388" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
 
         <div class="col-md-6">
             <br>
             <h3>
-                    Aprenda do ZERO as mais modernas tecnologias exegidas pelo mercado em um curso inedito e COMPLETO
+                    Aprenda do ZERO as mais modernas tecnologias exegidas pelo mercado em um curso inédito e COMPLETO
             </h3>
             <ul class="list-group" id="lista-vantagens">
                 <li class="list-group-item active vidro"><i class="glyphicon glyphicon-heart"> </i> Do absoluto zero a um software web no ar</li>
@@ -59,7 +58,7 @@
                 <li class="list-group-item active vidro"><i class="glyphicon glyphicon-flag"></i> Ajuda com os problemas de seu código</li>
                 <li class="list-group-item vidro"><i class="glyphicon glyphicon-envelope"></i> Suporte via e-mail/Git/Chat</li>
             </ul>
-            <a href="#inscreva" class="btn btn-info page-scroll"><h4>Quero me inscrever</h4></a>
+            <a href="#contratar" class="btn btn-info page-scroll"><h4>Quero ser um desenvolvedor</h4></a>
         </div>
     </div>
 </section>
@@ -301,51 +300,117 @@
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="intro-section2">
-    <h2>Contagem regressiva </h2>
-    {% include 'template_bootstrap/countdown.html' %}
-</section>
-
-<section id="inscreva" class="contact-section">
-    <div class="row">
-      <div class="col-lg-12">
-
-
-        <h3>
-            Para ingressar nessa jornada incrível use umas das redes sociais abaixo ou apenas insira seu nome e e-mail nos campos abaixo
-        </h3>
-        <form method="POST" class="form-inline">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome"  class="form-control transparent" required placeholder="Digite seu nome">
-                <label for="email">Email</label>
-                <label for="email" class="sr-only" ></label>
-                <input type="email" placeholder="seu.email@aqui.com.br" id="email" name='email' class="form-control transparent" required>
-            </div>
-            <button class="btn btn-danger">Eu quero uma vaga!</button>
+<section class="intro-section">
+    <div class="col-lg-12">
+        <h2>Escolha a carreira que melhor se adapta ao seu estilo</h2>
+        <h4>Não se preocupe, você tem até 30 dias para desistir e solicitar o seu dinheiro de volta caso
+            você não goste do conteúdo do curso ou da didática do professor!
+        </h4>
+    </div>
+    <div class="col-lg-4 contratar" id="contratar">
+        <img src="{% static 'img/front.png' %}" alt="Carreira frontend" width="300em">
+        <h4>Escolha a carreira completa de desenvolvedor frontend com os módulos abaixo e aprenda a criar sites
+        incríveis e a colocá-los no ar!</h4>
+        <ol>
+            <li>Fundamentos da web</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Bootstrap 3</li>
+            <li>Git</li>
+            <li>Heroku</li>
+        </ol>
+        <h4>R$ 299,99 (R$ 30,00 de desconto para depósito em conta)</h4>
+        <a href="{% url 'url_core_deposito_conta' %}" class="btn btn-info">Depósito em conta</a>
+        <br>
+        ou
+        <br>
+        <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+        <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+        <input type="hidden" name="code" value="6114006B9A9A323004B21F8F71905719" />
+        <input type="hidden" name="iot" value="button" />
+        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
         </form>
+        <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+    </div>
+    <div class="col-lg-4 contratar">
+        <img src="{% static 'img/back.png' %}" alt="Carreira backend" width="300em">
 
-            <!--<div class="row row-centered">-->
-            <!--<div class="col-xs-4 col-centered">-->
-            <!--<a href="/accounts/facebook/login/?process=login">-->
-            <!--<img src="{% static 'img/facebook.png' %}" alt="Login com Facebook">-->
-            <!--</a>-->
-            <!--<a href="/accounts/google/login/?process=login'">-->
-            <!--<img src="{% static 'img/google-plus.png' %}" alt="Login com Google">-->
-            <!--</a>-->
-            <!--<a href="/accounts/twitter/login/?process=login'">-->
-            <!--<img src="{% static 'img/twitter.png' %}" alt="Login com Twitter">-->
-            <!--</a>-->
-            <!--</div>-->
-            <!--</div>-->
-
-
-        </div>
+        <h4>Escolha a carreira completa de desenvolvedor backend com os módulos abaixo e aprenda a criar softwares web
+        de alta qualidade e a colocá-los no!</h4>
+        <ol>
+            <li>Fundamentos da web</li>
+            <li>Git</li>
+            <li>Python</li>
+            <li>Lógica de programação</li>
+            <li>Django</li>
+            <li>MySQL</li>
+            <li>Postgres</li>
+            <li>Heroku</li>
+        </ol>
+        <h4>R$ 399,99 (R$ 40,00 de desconto para depósito em conta)</h4>
+        <a href="{% url 'url_core_deposito_conta' %}" class="btn btn-info">Depósito em conta</a>
+        <br>
+        ou
+        <br>
+        <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+        <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+        <input type="hidden" name="code" value="B5C6E9BF2E2EDF7554DE1F86D646C0FB" />
+        <input type="hidden" name="iot" value="button" />
+        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/120x53-comprar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+        <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+    </div>
+    <div class="col-lg-4">
+        <img src="{% static 'img/full.png' %}" alt="Programador frontend">
+        <h4>Através desta opção você terá acesso TOTAL a todos os módulos do curso e com isso você iniciará uma
+        incrível jornada para se tornar um desenvolvedor Full Stack</h4>
+        <h4>R$ 599,99 (R$ 50,00 de desconto para depósito em conta)</h4>
+        <a href="{% url 'url_core_deposito_conta' %}" class="btn btn-info">Depósito em conta</a>
+        <br>
+        ou
+        <br>
+        <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+        <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+        <input type="hidden" name="code" value="E2873B702B2B725AA48B6F9D747C2A5D" />
+        <input type="hidden" name="iot" value="button" />
+        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/120x53-comprar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+        </form>
+        <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+        <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
     </div>
 </section>
 
+
+<!--<section id="inscreva" class="contact-section">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-12">-->
+        <!--<h3>-->
+            <!--Para ingressar nessa jornada incrível use umas das redes sociais abaixo ou apenas insira seu nome e e-mail nos campos abaixo-->
+        <!--</h3>-->
+        <!--<form method="POST" class="form-inline">-->
+            <!--<input type="hidden" name="csrfmiddlewaretoken" value="VQosf8Vt5o44D0CfrGsHIuINeSFPGfbIdj1wDGDpMPpnH6FFlaGA9YTHlE9HUqo7">-->
+            <!--<div class="form-group">-->
+                <!--<label for="nome">Nome</label>-->
+                <!--<input type="text" id="nome" name="nome" class="form-control transparent" required="" placeholder="Digite seu nome">-->
+                <!--<label for="email">Email</label>-->
+                <!--<label for="email" class="sr-only"></label>-->
+                <!--<input type="email" placeholder="seu.email@aqui.com.br" id="email" name="email" class="form-control transparent" required="">-->
+            <!--</div>-->
+            <!--<button class="btn btn-danger">Eu quero uma vaga!</button>-->
+        <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+
 <div class="footer">
+    <br>
     <p align="center">Alguns direitos reservados</p>
+    <p>E-mail para contato: contato@programefacil.com.br</p>
 </div>
 {% endblock %}
