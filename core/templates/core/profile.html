@@ -6,11 +6,13 @@
 {% block main %}
 <div class="row">
     <h1>Sua lista de cursos matriculados</h1>
-        {% for course in courses %}
+        {% for enr in enrollment %}
             <div class="col-md-3">
-                <a href="{% url 'url_core_course' course.id %}">
-                    <img src="{{course.image}}" alt="{{course.description}}" width="300px" height="300px">
+                <a href="{% url 'url_core_course' enr.course.id %}">
+                    <img src="{{enr.course.image}}" alt="{{enr.course.description}}" width="300px" height="300px">
                 </a><br>
+                <p>{{enr.course.full_description}}</p>
+                <a href="{% url 'url_core_course' enr.course.id %}" class="btn btn-info">Acessar</a>
             </div>
         {% endfor %}
 </div>

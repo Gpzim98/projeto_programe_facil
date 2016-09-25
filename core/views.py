@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from core.email import email
 from django.core.mail import EmailMessage
-from core.models import Lead, Member, Course, Module, Class
+from core.models import Lead, Member, Course, Module, Class, CourseEnrollment, ModulesEnrollment
 from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
 from django.contrib import messages
@@ -91,16 +91,15 @@ def deposito(request):
 
 @login_required
 def profile(request):
-    courses = Course.objects.filter(member=Member.objects.get(user=request.user))
-
-    return render(request, 'core/profile.html', {'courses': courses})
+    enrollment = CourseEnrollment.objects.filter(member=Member.objects.get(user=request.user))
+    return render(request, 'core/profile.html', {'enrollment': enrollment})
 
 
 @login_required
 def course(request, course_id):
     course = Course.objects.get(id=course_id)
-    modules = Module.objects.filter(course=course)
-    return render(request, 'core/course.html', {'modules': modules, 'course': course})
+    modules_enrolled = ModulesEnrollment.objects.filter(module__course=course)
+    return render(request, 'core/course.html', {'modules_enrolled': modules_enrolled, 'course': course})
 
 
 @login_required

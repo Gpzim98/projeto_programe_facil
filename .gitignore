@@ -5,3 +5,5 @@
 *.sqlite3
 *pyc
 __pycache__
+media
+static

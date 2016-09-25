@@ -9,10 +9,19 @@
         <h1>Seja bem vindo ao curso {{course}}</h1>
 
         <h2>Abaixo a lista de módulos deste curso</h2>
-        {% for module in modules %}
+        {% for enr in modules_enrolled %}
             <div class="col-md-3">
-                <a href="{% url 'url_core_modules' module.id %}">
-                    <img src="{{module.image}}" alt="{{course.description}}" width="100px" height="100px">
+                <h3>Status:
+                    <span class="label label-default">
+                        {% if enr.module.status %}
+                           Liberado
+                        {% else %}
+                           {{enr.module.date_release}}
+                        {% endif %}
+                    </span>
+                </h3>
+                <a href="{% if enr.module.status %}{% url 'url_core_modules' enr.module.id %}{% endif %}">
+                    <img src="{{enr.module.image}}" alt="{{enr.module.description}}" width="100px" height="100px">
                 </a><br>
             </div>
         {% endfor %}
