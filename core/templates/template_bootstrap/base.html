@@ -40,55 +40,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top nav-vidro" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Programe Fácil</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">Tecnologias abordadas</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Depoimentos</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#autor">Sobre o tutor</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contratar">Contratar agora</a>
-                    </li>
-                    <!--<li>-->
-                        <!--<a class="page-scroll" href="#inscreva">Se increva</a>-->
-                    <!--</li>-->
-                </ul>
-                <div class="social">
-                    <a href="https://www.facebook.com/projetoprogramefacil/" title="Curta nossa página no Facebook"
-                       class="facebook" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-                    <a href="http://www.twitter.com/programe_facil" title="Siga-nos no twitter"
-                       class="twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a href="https://www.youtube.com/channel/UCki1tFRGGJYTJdL7M0_Y62A" title="Assine o nosso canal no You tube"
-                       class="gplus" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
-                </div>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    {% include 'core/menu.html' %}
 
     <div class="container-fluid">
     {% block main %}

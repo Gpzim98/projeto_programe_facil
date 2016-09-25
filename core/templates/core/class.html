@@ -1,0 +1,17 @@
+
+
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Área de membros{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-xs-12 .col-md-8">
+        <h1>Seja bem vindo a aula {{class}}</h1>
+
+        {{class.link|safe}}
+    </div>
+</div>
+
+{% endblock %}

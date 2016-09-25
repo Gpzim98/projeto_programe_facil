@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from core.email import email
 from django.core.mail import EmailMessage
-from core.models import Lead
+from core.models import Lead, Member, Course, Module, Class
 from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
 from django.contrib import messages
@@ -29,19 +30,18 @@ def save_lead(lead):
 
 
 def home(request):
-    data = {}
-
     if request.method == 'POST':
         lead = Lead(name=request.POST.get('nome'), email=request.POST.get('email'))
         if save_lead(lead) == 0:
-            messages.add_message(request, messages.INFO, 'Brilhante, parabêns!, você foi cadastrado com sucesso! Verifique o seu e-mail e clique no ' \
-                          'link para ativar o seu cadastro')
+            messages.add_message(request, messages.INFO, 'Brilhante, parabêns!, você foi cadastrado com sucesso! '
+                                                         'Verifique o seu e-mail e clique no link para ativar o seu '
+                                                         'cadastro')
             email(contact=lead, template='core/mail/client_subscribed.html', subject="Parabéns você foi incrível!")
         else:
             messages.add_message(request, messages.INFO, 'Parabêns, você já estava cadastrado! Acompanhe sua caixa de '
                                                          'e-mail para os próximos passos')
 
-    return render(request, 'template_bootstrap/index.html', data)
+    return render(request, 'template_bootstrap/index.html')
 
 
 def email_confim(request, code):
@@ -87,3 +87,30 @@ def email_teste(request, code):
 
 def deposito(request):
     return render(request, 'template_bootstrap/deposito.html')
+
+
+@login_required
+def profile(request):
+    courses = Course.objects.filter(member=Member.objects.get(user=request.user))
+
+    return render(request, 'core/profile.html', {'courses': courses})
+
+
+@login_required
+def course(request, course_id):
+    course = Course.objects.get(id=course_id)
+    modules = Module.objects.filter(course=course)
+    return render(request, 'core/course.html', {'modules': modules, 'course': course})
+
+
+@login_required
+def module(request, module_id):
+    module = Module.objects.get(id=module_id)
+    classes = Class.objects.filter(module=module)
+    return render(request, 'core/classes.html', {'classes': classes, 'module': module})
+
+
+@login_required
+def classes(request, class_id):
+    class_ = Class.objects.get(id=class_id)
+    return render(request, 'core/class.html', {'class': class_})

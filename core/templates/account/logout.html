@@ -1,0 +1,38 @@
+{% extends "template_bootstrap/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+
+{% block main %}
+
+    <div id="main">
+        <section class="about-section" style="margin-top:80px; height:500px;">
+
+              <h1>{% trans "Sign In" %}</h1>
+
+              <br>
+              <h2>or Using my user name and password</h2>
+
+                    <div class="col-md-2 col-md-offset-5">
+                    <!--dt-sc-two-third starts-->
+                    <h1>{% trans "Sign Out" %}</h1>
+
+                    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+                    <form method="post" action="{% url 'account_logout' %}">
+                      {% csrf_token %}
+                      {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                      {% endif %}
+                      <button type="submit">{% trans 'Sign Out' %}</button>
+                    </form>
+
+                    </div>
+        </section>
+    </div>
+
+
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Área de membros{% endblock %}
+
+{% block main %}
+<div class="row">
+    <h1>Sua lista de cursos matriculados</h1>
+        {% for course in courses %}
+            <div class="col-md-3">
+                <a href="{% url 'url_core_course' course.id %}">
+                    <img src="{{course.image}}" alt="{{course.description}}" width="300px" height="300px">
+                </a><br>
+            </div>
+        {% endfor %}
+</div>
+
+{% endblock %}

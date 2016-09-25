@@ -1,0 +1,39 @@
+{% extends "template_bootstrap/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+
+{% block main %}
+
+    <div id="main">
+        <section class="about-section" style="margin-top:80px; height:500px;">
+
+              <h1>{% trans "Sign In" %}</h1>
+
+              <br>
+              <h2>or Using my user name and password</h2>
+
+                    <div class="col-md-2 col-md-offset-5">
+                    <!--dt-sc-two-third starts-->
+                    <form class="contact-form" method="POST" action="{% url 'account_login' %}" tabindex="-1">
+                          {% csrf_token %}
+                          {{ form|bootstrap }}
+                          {% if redirect_field_value %}
+                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                          {% endif %}
+                          <div class="form-actions">
+                            <button class="btn btn-xs" type="submit">{% trans "Sign In" %}</button>
+                            <a class="btn btn-xl" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                            <p>{% trans 'Not registered yet?  '%}<a href="{{ signup_url }}">{% trans 'sign up' %}</a>
+                          </div>
+                    </form>
+                    </div>
+        </section>
+    </div>
+
+
+{% endblock %}
+

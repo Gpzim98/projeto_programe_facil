@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'core',
 
     # Social media authenticator
+    'bootstrapform',
     'django.contrib.sites',
     'allauth',
     'allauth.account',

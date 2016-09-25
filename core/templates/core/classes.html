@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Lista de módulos deste aulas deste módulo{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-xs-12 .col-md-8">
+        <h1>Seja bem vindo ao módulo {{module}}</h1>
+
+        <h2>Abaixo a lista de aulas deste módulo</h2>
+        {% for class in classes %}
+            <a href="{% url 'url_core_class' class.id %}">{{class}}</a>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Lista de módulos{% endblock %}
+
+{% block main %}
+<div class="row">
+
+        <h1>Seja bem vindo ao curso {{course}}</h1>
+
+        <h2>Abaixo a lista de módulos deste curso</h2>
+        {% for module in modules %}
+            <div class="col-md-3">
+                <a href="{% url 'url_core_modules' module.id %}">
+                    <img src="{{module.image}}" alt="{{course.description}}" width="100px" height="100px">
+                </a><br>
+            </div>
+        {% endfor %}
+</div>
+
+{% endblock %}
