@@ -98,7 +98,8 @@ def profile(request):
 @login_required
 def course(request, course_id):
     course = Course.objects.get(id=course_id)
-    modules_enrolled = ModulesEnrollment.objects.filter(module__course=course).order_by('module__order')
+    modules_enrolled = ModulesEnrollment.objects.filter(module__course=course, member__user=request.user).order_by(
+        'module__order')
     return render(request, 'core/course.html', {'modules_enrolled': modules_enrolled, 'course': course})
 
 
