@@ -10,7 +10,7 @@
 
         <h2>Abaixo a lista de aulas deste módulo</h2>
         {% for class in classes %}
-            <a href="{% url 'url_core_class' class.id %}">{{class}}</a>
+            <a href="{% url 'url_core_class' class.id %}">{{class}}</a><br>
         {% endfor %}
 
     </div>
