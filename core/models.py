@@ -28,6 +28,7 @@ class Module(models.Model):
     image = models.CharField(max_length=500)
     status = models.BooleanField()
     date_release = models.DateField()
+    order = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.description
@@ -55,8 +56,8 @@ class CourseEnrollment(models.Model):
     member = models.ForeignKey(Member)
     course = models.ForeignKey(Course)
     final_score = models.DecimalField(max_digits=4, decimal_places=2)
-    final_test = models.FileField(upload_to='tests/final')
-    slide = models.FileField(upload_to='slides')
+    final_test = models.FileField(upload_to='tests/final', null=True, blank=True)
+    slide = models.FileField(upload_to='slides', null=True, blank=True)
 
     def __str__(self):
         return self.member.user.username + ' - ' + self.course.description
@@ -66,8 +67,8 @@ class ModulesEnrollment(models.Model):
     member = models.ForeignKey(Member)
     module = models.ForeignKey(Module)
     final_score = models.DecimalField(max_digits=4, decimal_places=2)
-    final_test = models.FileField(upload_to='tests/final')
-    slide = models.FileField(upload_to='slides')
+    final_test = models.FileField(upload_to='tests/final', null=True, blank=True)
+    slide = models.FileField(upload_to='slides', null=True, blank=True)
 
     def __str__(self):
         return self.member.user.username + ' - ' + self.module.description

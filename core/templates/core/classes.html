@@ -6,12 +6,31 @@
 {% block main %}
 <div class="row">
     <div class="col-xs-12 .col-md-8">
-        <h1>Seja bem vindo ao módulo {{module}}</h1>
+        <h1 align="center">Você esta no módulo "{{module}}"</h1>
 
-        <h2>Abaixo a lista de aulas deste módulo</h2>
-        {% for class in classes %}
-            <a href="{% url 'url_core_class' class.id %}">{{class}}</a><br>
-        {% endfor %}
+        <h2 align="center">Abaixo a lista de aulas deste módulo</h2>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <th>Módulo</th>
+                    <th>Assistir</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                {% for class in classes %}
+                  <tr>
+                    <td>{{class.id}}</td>
+                    <td>{{class.description}}</td>
+                    <td>{{class.module.description}}</td>
+                    <td><a href="{% url 'url_core_class' class.id %}">{{class}}</a><br></td>
+                  </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
 
     </div>
 </div>

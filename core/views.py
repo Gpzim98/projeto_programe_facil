@@ -98,14 +98,14 @@ def profile(request):
 @login_required
 def course(request, course_id):
     course = Course.objects.get(id=course_id)
-    modules_enrolled = ModulesEnrollment.objects.filter(module__course=course)
+    modules_enrolled = ModulesEnrollment.objects.filter(module__course=course).order_by('module__order')
     return render(request, 'core/course.html', {'modules_enrolled': modules_enrolled, 'course': course})
 
 
 @login_required
 def module(request, module_id):
     module = Module.objects.get(id=module_id)
-    classes = Class.objects.filter(module=module)
+    classes = Class.objects.filter(module=module).order_by('description')
     return render(request, 'core/classes.html', {'classes': classes, 'module': module})
 
 
