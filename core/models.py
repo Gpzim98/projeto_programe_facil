@@ -42,7 +42,7 @@ class Class(models.Model):
     order = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.description
+        return self.description + ' - ' + self.module.description
 
 
 class Member(models.Model):
