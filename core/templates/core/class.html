@@ -7,10 +7,22 @@
 
 {% block main %}
 <div class="row">
-    <div class="col-xs-12 .col-md-8">
-        <h1>Seja bem vindo a aula: "{{class}}"</h1>
-
+    <div class="col-xs-12 col-md-12 col-sl-12">
+        <h1>Seja bem vindo a aula: "{{class.description}}"</h1>
+    </div>
+    <div class="col-xs-12 col-md-8">
         {{class.link|safe}}
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <span class="label label-default">Descrição da aula</span><br>
+        <p>{{class.full_description}}</p>
+
+        <span class="label label-default">Módulo</span>
+        <p>{{class.module}}</p>
+
+        <span class="label label-default">Voltar para a lista de aulas</span><br><br>
+        <a href="{% url 'url_core_modules' class.module.id %}"><img src="{% static 'img/return.png' %}" alt="Voltar"></a>
+
     </div>
 </div>
 

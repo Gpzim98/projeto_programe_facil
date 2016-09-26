@@ -1,7 +1,8 @@
 from django.conf.urls import url, include
 from core.views import home, thanks, email_teste, email_confim, deposito, profile, module, course, classes
 from django.views.generic import TemplateView
-
+from django.conf import settings
+from django.views.static import serve
 
 urlpatterns = [
     url(r'^$', home, name='core_home'),
@@ -19,4 +20,5 @@ urlpatterns = [
     url(r'^class/(?P<class_id>\d+)/$', classes, name='url_core_class'),
 ]
 
-
+if settings.DEBUG:
+    urlpatterns.append(url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}))

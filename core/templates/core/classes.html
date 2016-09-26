@@ -8,6 +8,8 @@
     <div class="col-xs-12 .col-md-8">
         <h1 align="center">Você esta no módulo "{{module}}"</h1>
 
+        {% if classes %}
+
         <h2 align="center">Abaixo a lista de aulas deste módulo</h2>
             <table class="table table-striped">
                 <thead>
@@ -31,7 +33,9 @@
 
             </tbody>
         </table>
-
+        {% else %}
+            <h3>Ainda não há aulas lançadas neste módulo</h3>
+        {% endif %}
     </div>
 </div>
 
