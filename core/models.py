@@ -39,6 +39,7 @@ class Class(models.Model):
     full_description = models.TextField()
     link = models.CharField(max_length=800)
     module = models.ForeignKey(Module)
+    order = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.description

@@ -106,7 +106,7 @@ def course(request, course_id):
 @login_required
 def module(request, module_id):
     module = Module.objects.get(id=module_id)
-    classes = Class.objects.filter(module=module).order_by('description')
+    classes = Class.objects.filter(module=module).order_by('order')
     return render(request, 'core/classes.html', {'classes': classes, 'module': module})
 
 
