@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Área de membros{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-sl-12">
+        <h1>Submeta seu arquivo com as respostas no formulário abaixo:</h1>
+    </div>
+    <div class="col-xs-12 col-md-8">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|bootstrap}}<br>
+            <button type="submit" class="btn btn-main">Enviar</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

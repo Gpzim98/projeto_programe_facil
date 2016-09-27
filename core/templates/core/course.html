@@ -32,7 +32,7 @@
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <span class="label label-default">Descrição do módulo</span><br><br>
-                    <p style="text-align:justify">{{course.full_description}}</p>
+                    <p style="text-align:justify">{{enr.module.full_description}}</p>
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <span class="label label-default">Slide do módulo</span><br><br>
@@ -41,7 +41,7 @@
                             <img src="{% static 'img/google-slides.png' %}" alt="Slide do módulo">
                         </a>
                     {% else %}
-                        <p>Este módulo não possui slides</p>
+                        <p>Os slides serão postados em breve</p>
                     {% endif %}
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4">
@@ -51,11 +51,11 @@
                             <img src="{% static 'img/google-slides.png' %}" alt="Slide do módulo">
                         </a>
                     {% else %}
-                        <p>Este módulo não possui exercícios</p>
+                        <p>Os exercícios serão postados em breve</p>
                     {% endif %}
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4">
-                    <a href="" class="btn btn-info">Enviar respotas</a>
+                    <a href="{% url 'url_core_submit_answer' enr.id %}" class="btn btn-info">Enviar respotas</a>
                 </div>
             </div>
         </div>

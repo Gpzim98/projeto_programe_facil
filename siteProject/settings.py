@@ -185,3 +185,6 @@ SOCIALACCOUNT_PROVIDERS = \
 
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
+
+#http://stackoverflow.com/questions/12766642/django-heroku-s3
+#http://django-storages.readthedocs.io/en/latest/index.html

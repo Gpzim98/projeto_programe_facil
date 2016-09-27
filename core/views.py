@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from core.email import email
 from django.core.mail import EmailMessage
 from core.models import Lead, Member, Course, Module, Class, CourseEnrollment, ModulesEnrollment
+from core.forms import ModulesEnrollmentForm
 from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
 from django.contrib import messages
@@ -114,3 +115,16 @@ def module(request, module_id):
 def classes(request, class_id):
     class_ = Class.objects.get(id=class_id)
     return render(request, 'core/class.html', {'class': class_})
+
+
+@login_required
+def answer_submit(request, enr_id):
+    enr = ModulesEnrollment.objects.get(id=enr_id)
+
+    if request.method == 'POST':
+        enr.final_test_answer = request.FILES.get('final_test_answer')
+        enr.save()
+        return redirect('url_core_modules', enr.module.id)
+    else:
+        form = ModulesEnrollmentForm()
+        return render(request, 'core/answer_submit.html', {'form': form})
