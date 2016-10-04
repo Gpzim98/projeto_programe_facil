@@ -59,7 +59,7 @@ class Member(models.Model):
 class CourseEnrollment(models.Model):
     member = models.ForeignKey(Member)
     course = models.ForeignKey(Course)
-    final_score = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    final_score = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True, default=0)
     final_test = models.FileField(upload_to='tests/final', null=True, blank=True)
     slide = models.FileField(upload_to='slides', null=True, blank=True)
 

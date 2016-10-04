@@ -30,11 +30,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['www.programefacil.com.br', 'programefacil.com.br']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'srv146.prodns.com.br'
+EMAIL_HOST = 'webmail.programefacil.com.br'
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_HOST_USER = config('EMAIL_USER')
 EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
 # Application definition
@@ -57,7 +56,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-
 ]
 
 MIDDLEWARE = [
@@ -183,7 +181,6 @@ SOCIALACCOUNT_PROVIDERS = \
              }
     }
 
-MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
 #http://stackoverflow.com/questions/12766642/django-heroku-s3

@@ -27,7 +27,11 @@
                     <img src="{{enr.module.image}}" alt="{{enr.module.description}}" width="100px" height="100px">
                 </a><br>
                 <span class="label label-default">Sua pontuação neste módulo</span><br>
-                <b>{{enr.final_score}}</b>
+                {% if enr.final_score %}
+                    <b>{{enr.final_score}}</b>
+                {% else %}
+                    <b>Pontuação ainda não informada</b>
+                {% endif %}
             </div>
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="col-xs-12 col-sm-12 col-md-12">
