@@ -42,6 +42,7 @@ class Class(models.Model):
     link = models.CharField(max_length=800)
     module = models.ForeignKey(Module)
     order = models.IntegerField(null=True, blank=True)
+    forum_link = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.description + ' - ' + self.module.description

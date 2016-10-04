@@ -21,7 +21,10 @@
         <p>{{class.module}}</p>
 
         <span class="label label-default">Voltar para a lista de aulas</span><br><br>
-        <a href="{% url 'url_core_modules' class.module.id %}"><img src="{% static 'img/return.png' %}" alt="Voltar"></a>
+        <a href="{% url 'url_core_modules' class.module.id %}"><img src="{% static 'img/return.png' %}" alt="Voltar"></a><br>
+
+        <span class="label label-default">Ir para o fórum desta aula</span><br><br>
+        <a href="{{class.forum_link}}" target="_blank"><img src="{% static 'img/forum.png' %}" alt="Voltar"></a>
 
     </div>
 </div>
