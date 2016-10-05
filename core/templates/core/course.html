@@ -41,7 +41,7 @@
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <span class="label label-default">Slide do módulo</span><br><br>
                     {% if enr.module.slide %}
-                        <a href="/media/{{enr.module.slide}}" target="_blank">
+                        <a href="{{enr.module.slide.url}}" target="_blank">
                             <img src="{% static 'img/google-slides.png' %}" alt="Slide do módulo">
                         </a>
                     {% else %}
@@ -51,7 +51,7 @@
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <span class="label label-default">Exercícios do módulo</span><br><br>
                     {% if enr.module.exercise %}
-                        <a href="/media/{{enr.module.exercise}}" target="_blank">
+                        <a href="{{enr.module.exercise.url}}" target="_blank">
                             <img src="{% static 'img/google-slides.png' %}" alt="Slide do módulo">
                         </a>
                     {% else %}

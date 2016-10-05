@@ -181,7 +181,13 @@ SOCIALACCOUNT_PROVIDERS = \
              }
     }
 
-MEDIA_URL = '/media/'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = 'programe-facil'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+MEDIA_URL = "https://programe-facil.s3.amazonaws.com/"
+MEDIA_ROOT = ''
+AWS_ACCESS_KEY_ID = 'AKIAJEWQLCCEBAROLURA'
+AWS_SECRET_ACCESS_KEY = '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'
 
 #http://stackoverflow.com/questions/12766642/django-heroku-s3
 #http://django-storages.readthedocs.io/en/latest/index.html
