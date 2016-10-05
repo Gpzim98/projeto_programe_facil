@@ -14,3 +14,4 @@ requests-oauthlib==0.6.2
 static3==0.6.1
 django-bootstrap-form
 django-storages
+boto
