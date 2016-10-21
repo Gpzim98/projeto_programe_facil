@@ -128,3 +128,7 @@ def answer_submit(request, enr_id):
     else:
         form = ModulesEnrollmentForm()
         return render(request, 'core/answer_submit.html', {'form': form})
+
+
+def teste_video(request):
+    return render(request, 'core/teste_video.html')
