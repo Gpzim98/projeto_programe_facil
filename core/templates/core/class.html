@@ -1,5 +1,3 @@
-
-
 {% extends "core/base.html" %}
 {% load static %}
 
@@ -10,9 +8,19 @@
     <div class="col-xs-12 col-md-12 col-sl-12">
         <h1>Seja bem vindo a aula: "{{class.description}}"</h1>
     </div>
-    <div class="col-xs-12 col-md-8">
-        {{class.link|safe}}
-    </div>
+
+    {% if class.amazon %}
+        <video width="400" controls id="class-video" class="col-xs-12 col-md-8">
+            <source src="{{class.link}}"
+        type="video/avi">
+        </video>
+    {% else %}
+        <div class="col-xs-12 col-md-8">
+            {{class.link|safe}}
+        </div>
+    {% endif %}
+
+
     <div class="col-xs-12 col-md-4">
         <span class="label label-default">Descrição da aula</span><br>
         <p>{{class.full_description}}</p>
@@ -29,4 +37,12 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+    <script>
+      $(document).ready(function(){
+        $('#class-video').bind('contextmenu',function() { return false; });
+      });
+    </script>
 {% endblock %}
