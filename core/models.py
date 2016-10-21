@@ -43,6 +43,7 @@ class Class(models.Model):
     module = models.ForeignKey(Module)
     order = models.IntegerField(null=True, blank=True)
     forum_link = models.CharField(max_length=100, blank=True, null=True)
+    code_link = models.CharField(max_length=100, blank=True, null=True)
     amazon = models.BooleanField()
 
     def __str__(self):
