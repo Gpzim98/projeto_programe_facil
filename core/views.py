@@ -122,11 +122,13 @@ def answer_submit(request, enr_id):
     enr = ModulesEnrollment.objects.get(id=enr_id)
 
     if request.method == 'POST':
-        enr.final_test_answer = request.FILES.get('final_test_answer')
-        enr.save()
-        return redirect('url_core_modules', enr.module.id)
+        form = ModulesEnrollmentForm(request.POST, request.FILES, instance=enr)
+
+        if form.is_valid():
+            form.save()
+            return redirect('url_core_modules', enr.module.id)
     else:
-        form = ModulesEnrollmentForm()
+        form = ModulesEnrollmentForm(instance=enr)
         return render(request, 'core/answer_submit.html', {'form': form})
 
 

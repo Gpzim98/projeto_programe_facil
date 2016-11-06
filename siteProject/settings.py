@@ -176,13 +176,10 @@ SOCIALACCOUNT_PROVIDERS = \
              }
     }
 
-# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# MEDIA_URL = "https://programe-facil.s3.amazonaws.com/"
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % config('AWS_STORAGE_BUCKET_NAME')
+MEDIA_ROOT = '/media/'
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-
-#http://stackoverflow.com/questions/12766642/django-heroku-s3
-#http://django-storages.readthedocs.io/en/latest/index.html
-#heroku config:set DISABLE_COLLECTSTATIC=1
