@@ -10,7 +10,7 @@
         <h1>Submeta seu arquivo com as respostas no formulário abaixo:</h1>
     </div>
     <div class="col-xs-12 col-md-8">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form|bootstrap}}<br>
             <button type="submit" class="btn btn-main">Enviar</button>
