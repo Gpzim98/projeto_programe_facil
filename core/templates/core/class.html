@@ -9,17 +9,9 @@
         <h1>Seja bem vindo a aula: "{{class.description}}"</h1>
     </div>
 
-    {% if class.amazon %}
-        <video width="400" controls id="class-video" class="col-xs-12 col-md-8">
-            <source src="/home/xtreme/Aula_3_Workflow_b_sico_.webm"
-        type="video/webm">
-        </video>
-    {% else %}
-        <div class="col-xs-12 col-md-8">
-            {{class.link|safe}}
-        </div>
-    {% endif %}
-
+    <video width="400" controls id="class-video" class="col-xs-12 col-md-8">
+        <source src="{{ class.link }}" type="video/webm">
+    </video>
 
     <div class="col-xs-12 col-md-4">
         <span class="label label-default">Descrição da aula</span><br>
