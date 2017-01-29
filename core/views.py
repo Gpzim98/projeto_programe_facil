@@ -97,6 +97,7 @@ def profile(request):
     enrollment = CourseEnrollment.objects.filter(member=member)
     alerts = Alert.objects.filter(member=member)
     alerts_not_seen = alerts.filter(seen=False).count()
+    alerts = alerts[:10]
     return render(request, 'core/profile.html', {
         'enrollment': enrollment, 'alerts': alerts, 'alerts_not_seen': alerts_not_seen
     })\
@@ -110,6 +111,7 @@ def course(request, course_id):
         'module__order')
     alerts = Alert.objects.filter(member=Member.objects.get(user=request.user))
     alerts_not_seen = alerts.filter(seen=False).count()
+    alerts = alerts[:10]
     return render(request, 'core/course.html', {'modules_enrolled': modules_enrolled, 'course': course,
                                                 'alerts_not_seen': alerts_not_seen, 'alerts': alerts})
 
@@ -120,6 +122,7 @@ def module(request, module_id):
     classes = Class.objects.filter(module=module).order_by('order')
     alerts = Alert.objects.filter(member=Member.objects.get(user=request.user))
     alerts_not_seen = alerts.filter(seen=False).count()
+    alerts = alerts[:10]
     return render(request, 'core/classes.html', {'classes': classes, 'module': module,
                                                  'alerts_not_seen': alerts_not_seen, 'alerts': alerts})
 
@@ -129,6 +132,7 @@ def classes(request, class_id):
     class_ = Class.objects.get(id=class_id)
     alerts = Alert.objects.filter(member=Member.objects.get(user=request.user))
     alerts_not_seen = alerts.filter(seen=False).count()
+    alerts = alerts[:10]
     return render(request, 'core/class.html', {'class': class_, 'alerts_not_seen': alerts_not_seen, 'alerts': alerts})
 
 
