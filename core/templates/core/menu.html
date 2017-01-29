@@ -14,22 +14,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                <li class="hidden">
-                    <a class="page-scroll" href="/#page-top"></a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/#about">Tecnologias abordadas</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/#services">Depoimentos</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/#autor">Sobre o tutor</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/#contratar">Contratar agora</a>
-                </li>
                 {% if user.is_authenticated %}
                     <li>
                         <a class="page-scroll" href="{% url 'profile' %}">Meus cursos</a>
@@ -38,7 +22,45 @@
                         <a class="page-scroll" href="/accounts/logout">Sair</a>
                     </li>
                     <li><a class="page-scroll">Olá {{request.user}}</a></li>
+                    <li>
+                        <div class="dropdown" style="margin-top: 5px">
+                          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="glyphicon glyphicon-floppy-disk"> {{ alerts_not_seen }}</i>
+                            <span class="caret"></span>
+                          </button>
+
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            {% for alert in alerts %}
+                                {% if alert.seen %}
+                                    <li><a href="{% url 'url_alert' alert.id %}">
+                                        <i class="glyphicon glyphicon-flag"> Nova aula: {{alert.description}}</i>
+                                    </li>
+                                {% else %}
+                                    <li><a href="{% url 'url_alert' alert.id %}" class="alert alert-danger">
+                                        <i class="glyphicon glyphicon-flag"> Nova aula: {{alert.description}}</i></a></li>
+                                {% endif %}
+                            {% endfor %}
+                          </ul>
+                        </div>
+                    </li>
                 {% else %}
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="/#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#about">Tecnologias abordadas</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#services">Depoimentos</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#autor">Sobre o tutor</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#contratar">Contratar agora</a>
+                    </li>
+
                     <li>
                         <a class="page-scroll" href="/accounts/login">Login</a>
                     </li>
@@ -52,8 +74,7 @@
                 <a href="https://www.youtube.com/channel/UCki1tFRGGJYTJdL7M0_Y62A" title="Assine o nosso canal no You tube"
                    class="gplus" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
             </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>

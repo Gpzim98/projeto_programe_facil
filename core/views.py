@@ -1,8 +1,9 @@
+# -*- coding: utf:8 -*-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from core.email import email
 from django.core.mail import EmailMessage
-from core.models import Lead, Member, Course, Module, Class, CourseEnrollment, ModulesEnrollment
+from core.models import Lead, Member, Course, Module, Class, CourseEnrollment, ModulesEnrollment, Alert
 from core.forms import ModulesEnrollmentForm
 from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
@@ -92,8 +93,14 @@ def deposito(request):
 
 @login_required
 def profile(request):
-    enrollment = CourseEnrollment.objects.filter(member=Member.objects.get(user=request.user))
-    return render(request, 'core/profile.html', {'enrollment': enrollment})
+    member = Member.objects.get(user=request.user)
+    enrollment = CourseEnrollment.objects.filter(member=member)
+    alerts = Alert.objects.filter(member=member)
+    alerts_not_seen = alerts.filter(seen=False).count()
+    return render(request, 'core/profile.html', {
+        'enrollment': enrollment, 'alerts': alerts, 'alerts_not_seen': alerts_not_seen
+    })\
+
 
 
 @login_required
@@ -101,20 +108,28 @@ def course(request, course_id):
     course = Course.objects.get(id=course_id)
     modules_enrolled = ModulesEnrollment.objects.filter(module__course=course, member__user=request.user).order_by(
         'module__order')
-    return render(request, 'core/course.html', {'modules_enrolled': modules_enrolled, 'course': course})
+    alerts = Alert.objects.filter(member=Member.objects.get(user=request.user))
+    alerts_not_seen = alerts.filter(seen=False).count()
+    return render(request, 'core/course.html', {'modules_enrolled': modules_enrolled, 'course': course,
+                                                'alerts_not_seen': alerts_not_seen, 'alerts': alerts})
 
 
 @login_required
 def module(request, module_id):
     module = Module.objects.get(id=module_id)
     classes = Class.objects.filter(module=module).order_by('order')
-    return render(request, 'core/classes.html', {'classes': classes, 'module': module})
+    alerts = Alert.objects.filter(member=Member.objects.get(user=request.user))
+    alerts_not_seen = alerts.filter(seen=False).count()
+    return render(request, 'core/classes.html', {'classes': classes, 'module': module,
+                                                 'alerts_not_seen': alerts_not_seen, 'alerts': alerts})
 
 
 @login_required
 def classes(request, class_id):
     class_ = Class.objects.get(id=class_id)
-    return render(request, 'core/class.html', {'class': class_})
+    alerts = Alert.objects.filter(member=Member.objects.get(user=request.user))
+    alerts_not_seen = alerts.filter(seen=False).count()
+    return render(request, 'core/class.html', {'class': class_, 'alerts_not_seen': alerts_not_seen, 'alerts': alerts})
 
 
 @login_required
@@ -132,5 +147,9 @@ def answer_submit(request, enr_id):
         return render(request, 'core/answer_submit.html', {'form': form})
 
 
-def teste_video(request):
-    return render(request, 'core/teste_video.html')
+@login_required()
+def alert_view(request, pk):
+    alert = Alert.objects.get(pk=pk)
+    alert.seen = True
+    alert.save()
+    return redirect('url_core_class', alert.link)

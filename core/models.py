@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 
 class Lead(models.Model):
@@ -50,6 +51,19 @@ class Class(models.Model):
         return self.description + ' - ' + self.module.description
 
 
+def create_alert(sender, instance, created, **kwargs):
+    if not created:
+        return
+
+    members_module = ModulesEnrollment.objects.filter(module=instance.module)
+
+    for enrollment in members_module:
+        alert = Alert(description=instance.description, link=instance.id, member=enrollment.member)
+        alert.save()
+
+post_save.connect(create_alert, sender=Class)
+
+
 class Member(models.Model):
     user = models.ForeignKey(User)
     courses = models.ManyToManyField(Course)
@@ -82,3 +96,13 @@ class ModulesEnrollment(models.Model):
 
     def __str__(self):
         return self.member.user.username + ' - ' + self.module.description
+
+
+class Alert(models.Model):
+    description = models.CharField(max_length=100)
+    link = models.URLField()
+    seen = models.BooleanField(default=False)
+    member = models.ForeignKey(Member)
+
+    def __str__(self):
+        return self.description + ' - ' + self.member.user.username
