@@ -11,44 +11,39 @@
             {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <li {% if message.tags %}
+                            class="{{ message.tags }}" {% endif %}>{{ message
+                            }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}
 
         </div>
         {% endif %}
+    </div>
+
+    <div class="row">
         <div class="col-lg-12">
             <h1>Se torne um programador web</h1>
             <h3 id="h3-top-space">Ingresse na jornada que mudara a sua vida</h3>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="https://player.vimeo.com/video/178977249"></iframe>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <iframe width="250" height="140" src="https://www.youtube.com/embed/xLLKsdielCI"
-                    frameborder="0" allowfullscreen>
-            </iframe>
-        </div>
-        <div class="col-lg-4">
-            <div class="embed-responsive embed-responsive-16by9">
+        <div class="col-md-6 col-centered">
+            <div class='embed-responsive embed-responsive-16by9' >
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/vfJ4On5FzB8" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <iframe src="https://player.vimeo.com/video/181709388" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        </div>
+</section>
 
-        <div class="col-md-6">
+<section>
+
+    <div class="row">
+        <div class="col-md-6 col-centered">
             <br>
-            <h3>
+            <h3 style="text-align:center">
                     Aprenda do ZERO as mais modernas tecnologias exegidas pelo mercado em um curso inédito e COMPLETO
             </h3>
             <ul class="list-group" id="lista-vantagens">
@@ -57,7 +52,10 @@
                 <li class="list-group-item active vidro"><i class="glyphicon glyphicon-flag"></i> Ajuda com os problemas de seu código</li>
                 <li class="list-group-item vidro"><i class="glyphicon glyphicon-envelope"></i> Suporte via e-mail/Git/Chat</li>
             </ul>
-            <a href="#contratar" class="btn btn-info page-scroll"><h4>Quero ser um desenvolvedor</h4></a>
+            <a href="#contratar" class="btn btn-info page-scroll"
+               style="float:right">
+                <h4>Quero ser um desenvolvedor</h4>
+            </a>
         </div>
     </div>
 </section>
