@@ -95,7 +95,7 @@ def deposito(request):
 def profile(request):
     member = Member.objects.get(user=request.user)
     enrollment = CourseEnrollment.objects.filter(member=member)
-    alerts = Alert.objects.filter(member=member)
+    alerts = Alert.objects.filter(member=member).order_by('-id')
     alerts_not_seen = alerts.filter(seen=False).count()
     alerts = alerts[:10]
     return render(request, 'core/profile.html', {
